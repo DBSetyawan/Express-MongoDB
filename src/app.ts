@@ -2,8 +2,14 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import menuRoutes from "./routes";
+import { generateToken } from './api/utils/jwt.utils';
 
 const app = express();
+
+if (process.env.NODE_ENV !== 'production') {
+  console.log('JWT', generateToken());
+}
+
 
 const PORT: string | number = process.env.PORT || 3349;
 
